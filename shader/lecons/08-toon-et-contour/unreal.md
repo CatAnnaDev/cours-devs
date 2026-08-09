@@ -61,7 +61,7 @@ que ça donne aussi les contours **intérieurs** (les plis d'un vêtement, la s�
 du torse) que la coque inversée ne peut pas produire. Ça demande un matériau `Post Process` qui
 lit `SceneTexture:SceneDepth` et `SceneTexture:WorldNormal` et applique un opérateur de Sobel.
 
-**C'est la leçon 26 du cours**, et elle vaut pour les trois moteurs. Si tu vises Unreal
+**C'est la leçon 27 du cours**, et elle vaut pour les trois moteurs. Si tu vises Unreal
 sérieusement, saute la coque inversée et attends-la.
 
 ## Option 3 — Un vrai Shading Model toon

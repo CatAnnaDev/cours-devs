@@ -141,7 +141,7 @@ float4 positionCS = TransformWorldToHClip(ApplyShadowBias(positionWS, normalWS, 
 `ApplyShadowBias` décale légèrement le sommet le long de sa normale pour éviter l'**acné
 d'ombre** — ces rayures sombres qui apparaissent quand une surface s'ombre elle-même. Le bloc
 `UNITY_REVERSED_Z` empêche le sommet, une fois décalé, de passer derrière le plan proche de la
-lumière. C'est de la plomberie ; recopie-la, on l'expliquera vraiment à la leçon 23.
+lumière. C'est de la plomberie ; recopie-la, on l'expliquera vraiment à la leçon 24.
 
 **Les tags de rendu** comptent aussi :
 

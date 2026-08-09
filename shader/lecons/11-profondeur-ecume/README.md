@@ -208,7 +208,7 @@ pas déjà. Sur une scène chargée, ce n'est pas gratuit — et c'est un coût 
 seul objet s'en sert.
 
 D'où une règle pratique : si tu actives la texture de profondeur pour un effet, **sers-t'en pour
-tous ceux qui peuvent en profiter** — écume, particules douces, contours (leçon 26), brouillard
+tous ceux qui peuvent en profiter** — écume, particules douces, contours (leçon 27), brouillard
 volumétrique (27). Elle est déjà payée.
 
 ## À toi

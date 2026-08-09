@@ -128,7 +128,7 @@ sélectionne-la dans le projet, et règle `Wrap Mode` (`Repeat` / `Clamp`) et `F
 (`Bilinear` / `Point`) dans son inspecteur.
 
 Ce shader est **unlit** : il écrit sa couleur telle quelle. Pour un vrai sol tu voudras
-l'éclairage — c'est la leçon 22, qui fournit le squelette URP éclairé complet. Toutes les leçons
+l'éclairage — c'est la leçon 23, qui fournit le squelette URP éclairé complet. Toutes les leçons
 d'ici là s'y reportent en trois lignes.
 
 ## Unreal

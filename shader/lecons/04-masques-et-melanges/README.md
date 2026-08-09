@@ -161,7 +161,7 @@ lentement, la transition est large ; là où il change vite, elle est étroite. 
 
 **3. Le bas droit est constant.** `fwidth(valeur)` mesure la variation d'un pixel au suivant : en
 l'utilisant comme largeur, la transition fait toujours un pixel. C'est la recette du bord propre,
-et elle vaut aussi pour un contour de personnage (leçon 08) ou un contour de scène (leçon 26).
+et elle vaut aussi pour un contour de personnage (leçon 08) ou un contour de scène (leçon 27).
 
 Change `echelle` dans l'inspecteur : le bas droit reste net à toutes les échelles, le bas gauche
 non.

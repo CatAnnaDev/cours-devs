@@ -101,7 +101,7 @@ et que l'ordre change.
 **Le vecteur demi.** `normalize(vers_lumiere + vers_camera)` est le vecteur exactement entre la
 lumière et l'œil. Quand la normale lui est parallèle, la surface renvoie la lumière pile vers la
 caméra : c'est le point brillant. C'est le modèle de Blinn-Phong, plus ancien et bien plus rapide
-que le calcul physiquement correct — qu'on écrira à la leçon 21. En toon, il est *meilleur* que le
+que le calcul physiquement correct — qu'on écrira à la leçon 22. En toon, il est *meilleur* que le
 modèle correct, parce qu'un `step` dessus donne une tache aux bords nets, exactement ce qu'on veut.
 
 ## Le contour, ou la coque inversée
@@ -154,7 +154,7 @@ dans un second jeu d'UV, et extruder selon celles-là. C'est un travail d'artist
 programmeur.
 
 Et pour les contours intérieurs, il n'y a pas de solution en coque : il faut détecter les
-discontinuités de profondeur et de normale en post-traitement. **C'est la leçon 26.**
+discontinuités de profondeur et de normale en post-traitement. **C'est la leçon 27.**
 
 ## Unity URP
 
@@ -193,14 +193,14 @@ compile mais ne renvoie jamais d'ombre, et tu chercheras longtemps.
 
 **Les lumières additionnelles** ne sont pas gérées ici. Les ajouter demande
 `#pragma multi_compile_fragment _ _ADDITIONAL_LIGHTS` et une boucle sur `GetAdditionalLight` —
-c'est la leçon 22.
+c'est la leçon 23.
 
 ## Unreal
 
 Voir `unreal.md`. Résumé : Unreal ne laisse pas le matériau intervenir dans l'éclairage, donc on
 passe en `Unlit` et on fournit soi-même la direction de la lumière (idéalement par un
 `Material Parameter Collection`). Et pour le contour, la voie réellement utilisée en production
-est le **post-traitement**, pas la coque inversée — leçon 26.
+est le **post-traitement**, pas la coque inversée — leçon 27.
 
 ## Le banc
 
@@ -315,7 +315,7 @@ d'objets. C'est un bon exemple d'un arbitrage qu'on retrouve partout : *par obje
 5. **Fais le cube.** Applique le shader à un cube et regarde le contour s'ouvrir aux coins. Puis
    lisse les normales du cube et regarde le contour se refermer — au prix d'un éclairage devenu
    faux. Tu tiens là, en trente secondes, le compromis exact que la coque inversée impose, et tu
-   sauras pourquoi la leçon 26 existe.
+   sauras pourquoi la leçon 27 existe.
 
 ---
 

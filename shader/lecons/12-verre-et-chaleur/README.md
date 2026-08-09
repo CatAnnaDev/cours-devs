@@ -157,7 +157,7 @@ trop fort.
 **Le décor visible à travers ne correspond pas à la géométrie.** Normal : on décale une image
 plate, on ne calcule pas de vrais rayons. Un verre épais devrait montrer les objets déplacés
 **selon leur distance** ; ici tout est déplacé pareil. Pour aller plus loin il faut du
-raymarching (leçon 28), et ce n'est presque jamais rentable.
+raymarching (leçon 29), et ce n'est presque jamais rentable.
 
 **L'effet est trop visible.** C'est le piège esthétique de cette leçon. Une bonne distorsion de
 chaleur se remarque **quand on l'enlève**, pas quand elle est là. Règle-la, puis divise par deux.

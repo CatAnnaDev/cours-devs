@@ -130,7 +130,7 @@ plus d'ombre après que tu as écrit ton shader, c'est qu'il te manque la passe 
 On l'ajoutera à la leçon 05, où ça devient visible.
 
 `half4` plutôt que `float4` : de la demi-précision, deux fois moins chère sur mobile, sans
-différence visible pour une couleur. On y revient à la leçon 32.
+différence visible pour une couleur. On y revient à la leçon 33.
 
 ## Unreal 5
 
@@ -154,7 +154,7 @@ En `Default Lit`, tu remplis `Base Color`, `Metallic`, `Roughness`, `Normal` —
 qu'un shader PBR classique.
 
 Le `Material Domain` (dans `Details`) décide de la nature de l'objet : `Surface` pour un
-matériau normal, `Post Process` pour un effet plein écran (leçon 25), `Deferred Decal` pour une
+matériau normal, `Post Process` pour un effet plein écran (leçon 26), `Deferred Decal` pour une
 décalcomanie (16), `Volume` pour du volumétrique (27).
 
 **Et le HLSL, alors ?** Le nœud `Custom` accepte du HLSL brut : tu lui ajoutes des entrées

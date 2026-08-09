@@ -191,7 +191,7 @@ marge — et c'est aussi ce qui règle le débordement sur atlas.
 
 **Le coût est de huit accès texture par pixel.** C'est cher pour un effet permanent : réserve-le à
 la sélection, au survol, ou à quelques objets. Pour un contour sur tout l'écran, une passe de
-post-traitement coûte moins cher (leçon 26).
+post-traitement coûte moins cher (leçon 27).
 
 ## Les pièges
 

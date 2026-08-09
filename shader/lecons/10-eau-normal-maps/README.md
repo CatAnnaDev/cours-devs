@@ -264,7 +264,7 @@ leçon est déjà trop chère et l'on descend à une seule couche de normales, u
 et un ciel en cubemap au lieu des sondes de réflexion.
 
 Le compte à retenir : **deux textures + PBR complet + plein écran** est un budget sérieux. La
-leçon 31 mesurera tout ça.
+leçon 32 mesurera tout ça.
 
 ## À toi
 

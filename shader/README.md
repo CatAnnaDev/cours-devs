@@ -101,33 +101,34 @@ moteur, sur une sphère. Le chapitre `00-bases/04-la-boucle-d-iteration.md` mont
 | 18 | `18-bouclier-impacts` | un bouclier qui encaisse | tableaux d'uniformes, tampon circulaire, grille hexagonale, intersection |
 | 19 | `19-vertex-animation-textures` | une créature animée sans os | `texelFetch`, `VERTEX_ID`, cuisson d'animation, et les cuiseurs qui vont avec |
 | 20 | `20-instanciation` | mille touffes en une passe | données par instance, ce que l'instanciation supprime et ce qu'elle ne supprime pas |
+| 21 | `21-peinture-de-sommets` | un rocher mousse en bas, neige en haut | les 4 canaux libres du maillage, mélange par hauteur, peindre dans Blender |
 
 ### Bloc 4 — Éclairage
 
 | # | Leçon | Ce que tu apprends au passage |
 |---|---|---|
-| 21 | La BRDF à la main | pourquoi GGX, Smith, Fresnel-Schlick, conservation de l'énergie |
-| 22 | Éclairage personnalisé dans le moteur | `light()` en Godot, `LightingData` en URP, Shading Model en Unreal |
-| 23 | Ombres | shadow map, biais, acné et Peter Panning, PCF, cascades |
-| 24 | Réflexions et IBL | sondes, roughness et mips, plan de réflexion |
+| 22 | La BRDF à la main | pourquoi GGX, Smith, Fresnel-Schlick, conservation de l'énergie |
+| 23 | Éclairage personnalisé dans le moteur | `light()` en Godot, `LightingData` en URP, Shading Model en Unreal |
+| 24 | Ombres | shadow map, biais, acné et Peter Panning, PCF, cascades |
+| 25 | Réflexions et IBL | sondes, roughness et mips, plan de réflexion |
 
 ### Bloc 5 — Effets d'écran
 
 | # | Leçon | Ce que tu apprends au passage |
 |---|---|---|
-| 25 | Post-traitement : bloom et tonemap | passes de réduction, ACES, l'ordre des opérations |
-| 26 | Contours par profondeur et normales | opérateur de Sobel, seuils qui tiennent à toutes distances |
-| 27 | Volumétrique : brouillard et rais de lumière | marche dans un volume, bruit bleu, sous-échantillonnage |
-| 28 | Raymarching intégré au moteur | rendre une SDF avec la bonne profondeur, se mêler à la scène |
+| 26 | Post-traitement : bloom et tonemap | passes de réduction, ACES, l'ordre des opérations |
+| 27 | Contours par profondeur et normales | opérateur de Sobel, seuils qui tiennent à toutes distances |
+| 28 | Volumétrique : brouillard et rais de lumière | marche dans un volume, bruit bleu, sous-échantillonnage |
+| 29 | Raymarching intégré au moteur | rendre une SDF avec la bonne profondeur, se mêler à la scène |
 
 ### Bloc 6 — GPU
 
 | # | Leçon | Ce que tu apprends au passage |
 |---|---|---|
-| 29 | Compute : particules GPU | groupes de travail, buffers, barrières |
-| 30 | Compute : herbe et rendu indirect | générer la géométrie sur le GPU, `DrawIndirect` |
-| 31 | Optimiser : mesurer puis corriger | divergence, occupancy, ALU contre bande passante, RenderDoc |
-| 32 | Précision et pièges | `half` sur mobile, mips et dérivées, coutures, NaN |
+| 30 | Compute : particules GPU | groupes de travail, buffers, barrières |
+| 31 | Compute : herbe et rendu indirect | générer la géométrie sur le GPU, `DrawIndirect` |
+| 32 | Optimiser : mesurer puis corriger | divergence, occupancy, ALU contre bande passante, RenderDoc |
+| 33 | Précision et pièges | `half` sur mobile, mips et dérivées, coutures, NaN |
 
 ## Vérification
 
@@ -142,10 +143,10 @@ Voir `verif/README.md` pour ce que ça attrape et ce que ça n'attrape pas.
 
 ## État
 
-**Blocs 1, 2 et 3 écrits et complets** — les cinq chapitres de `00-bases/`, l'aide-mémoire, et
-vingt leçons avec leurs fichiers Godot, Unity et Unreal.
+**Blocs 1, 2 et 3 écrits et complets** — les six chapitres de `00-bases/`, l'aide-mémoire, et
+vingt et une leçons avec leurs fichiers Godot, Unity et Unreal.
 
-À la dernière vérification : **51 shaders Godot et 29 shaders Unity compilent, zéro erreur, zéro
+À la dernière vérification : **54 shaders Godot et 31 shaders Unity compilent, zéro erreur, zéro
 avertissement.**
 
 Le **bloc 1 existe en 2D** : chaque leçon de 01 à 08 fournit un `godot-2d.gdshader` et un
@@ -161,5 +162,6 @@ Quelques leçons fournissent plus que les cinq fichiers habituels :
 | 18 | `bouclier.gd` / `Bouclier.cs` — enregistrement des impacts en tampon circulaire |
 | 19 | `cuire_vat.gd` / `CuiseurVAT.cs` — les cuiseurs d'animation |
 | 20 | `foret.gd` / `Foret.cs` — peuplement et données par instance |
+| 21 | `godot-2d.gdshader` et `unity-2d.shader` — la peinture de sommets existe aussi en 2D |
 
 Les blocs 4 à 6 arrivent dans l'ordre du sommaire.

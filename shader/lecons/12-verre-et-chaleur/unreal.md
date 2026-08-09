@@ -52,7 +52,7 @@ Contrairement à Godot et Unity, la copie de scène d'Unreal n'expose pas de niv
 utilisables pour du verre dépoli. Les solutions, dans l'ordre :
 
 1. **`Blurred Scene Color`** — sur un matériau `Post Process`, Unreal expose une version floutée.
-   C'est la voie propre, mais elle impose un matériau de post-traitement (leçon 25).
+   C'est la voie propre, mais elle impose un matériau de post-traitement (leçon 26).
 2. **Plusieurs échantillons décalés** à la main : quatre à huit `SceneColor` aux UV légèrement
    différents, moyennés. Cher, et ça se voit sur le compteur.
 3. **`Roughness` élevée avec la réfraction physique** : ce n'est pas un flou, mais l'aspect

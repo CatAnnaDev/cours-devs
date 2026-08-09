@@ -104,7 +104,7 @@ chercheras longtemps pourquoi le résultat ne correspond pas au chiffre affiché
 
 Il n'y a pas de sortie « émissive » : ce shader est **unlit**, il écrit directement sa couleur
 finale. C'est le bon choix pour un néon. Si tu voulais un objet éclairé *et* émissif, il faudrait
-un shader `Lit` et ajouter l'émission au résultat de l'éclairage — leçon 22.
+un shader `Lit` et ajouter l'émission au résultat de l'éclairage — leçon 23.
 
 **Pour voir le halo** : dans l'asset URP, coche `HDR`. Puis dans la scène, ajoute un `Volume`
 global avec un override `Bloom` (`Threshold` ≈ 1, `Intensity` ≈ 0.5). Sans `HDR` coché, ta

@@ -9,7 +9,7 @@ Unreal a un nœud `Fresnel`. Il fait exactement le calcul de la leçon.
 3. `BaseReflectFractionIn` : la valeur du fresnel quand on regarde la surface **de face**.
    `0` donne un contour qui disparaît complètement au centre — c'est ce qu'on veut ici.
    La valeur physiquement correcte pour un diélectrique est `0.04`, et c'est ce qu'on utilisera à
-   la leçon 21 pour la vraie BRDF.
+   la leçon 22 pour la vraie BRDF.
 4. `Normal` : laisse vide pour utiliser la normale du pixel. Branche-y une normal map si tu veux
    que le contour suive les détails de la surface — voir « Les pièges » dans le `README.md`.
 

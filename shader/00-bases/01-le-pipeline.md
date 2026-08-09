@@ -120,7 +120,7 @@ Ce que le shader **peut** faire :
 
 Ce qu'il **ne peut pas** faire :
 
-- créer de la géométrie qui n'existait pas (sauf en compute, leçon 30) ;
+- créer de la géométrie qui n'existait pas (sauf en compute, leçon 31) ;
 - lire le pixel voisin dans la même passe — d'où les passes multiples ;
 - se souvenir de l'image précédente sans qu'on la lui donne explicitement ;
 - écrire ailleurs qu'à sa propre position.

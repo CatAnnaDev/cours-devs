@@ -21,7 +21,8 @@ float souplesse = COLOR.r;
 ```
 
 Tronc en noir, branches en gris, bout des feuilles en blanc. Le déplacement est multiplié par
-cette valeur : à zéro, rien ne bouge. C'est le premier usage sérieux de la couleur de sommet, et
+cette valeur : à zéro, rien ne bouge. C'est le premier usage sérieux de la couleur de sommet — la
+leçon 21 lui est entièrement consacrée et t'apprend à la peindre — et
 c'est un canal de données extrêmement pratique — quatre nombres par sommet, gratuits, que
 l'artiste peint au pinceau.
 
