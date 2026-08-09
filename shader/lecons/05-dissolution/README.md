@@ -204,6 +204,25 @@ uniformément — il y a peu de valeurs très basses et très hautes, beaucoup a
 banc corrige déjà en partie avec `smoothstep(0.25, 0.75, fbm(...))`. Enlève ce `smoothstep` et
 regarde la différence : c'est le même phénomène que le curseur de couverture de la leçon 04.
 
+## En 2D
+
+Une seule différence, et elle est importante : **pas de `discard`.**
+
+```glsl
+float presence = step(0.0, visible);
+COLOR = vec4(couleur, sprite.a * presence) * COLOR;
+```
+
+En 2D tout est déjà transparent : mettre l'alpha à zéro suffit, et c'est moins cher qu'un `discard`
+— qui, lui, désactive des optimisations (leçon 05, section « Ce que ça coûte »).
+
+Il n'y a pas non plus de passe d'ombre ni de passe de profondeur à tenir à jour : le shader 2D est
+donc trois fois plus court que le 3D, pour le même résultat visuel.
+
+Attention à l'atlas : `UV * echelle_bruit` sur le bruit ne pose pas de problème (c'est une texture
+séparée, hors atlas), mais si tu échantillonnes le sprite lui-même à des UV modifiées, tu
+déborderas.
+
 ## Les pièges
 
 **L'ombre reste pleine (Unity).** Il manque la passe `ShadowCaster`, ou elle n'applique pas le

@@ -125,6 +125,19 @@ Ce banc contient une chaîne de `if / else if` — exactement ce que la leçon `
 déconseille, puisque les cinq branches divergent entre bandes voisines. C'est assumé : ici on
 compare des formules, on ne rend pas un jeu. Dans un vrai shader, on choisirait une seule formule.
 
+## En 2D
+
+Même effet, avec un `fract` en plus :
+
+```glsl
+vec2 uv = fract(UV * carrelage + vitesse * TIME);
+```
+
+Le `fract` est nécessaire parce qu'un sprite ne se répète pas : sans lui, l'UV sort de la région et
+va lire le voisin dans l'atlas. Avec, le défilement boucle **dans** le sprite.
+
+C'est la recette de la barre de chargement animée, du tapis roulant et de la cascade en 2D.
+
 ## Les pièges
 
 **Après une heure de jeu, l'animation saccade.** C'est réel, et déroutant la première fois. Un

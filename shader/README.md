@@ -15,8 +15,14 @@ lecons/05-dissolution/
 ├── godot.gdshader   fichier prêt à déposer dans un projet Godot 4
 ├── unity.shader     fichier prêt à déposer dans un projet Unity URP
 ├── unreal.md        le graphe Material node par node + l'équivalent HLSL en nœud Custom
+├── godot-2d.gdshader  la version 2D : un shader canvas_item pour sprite
+├── unity-2d.shader    la version 2D : un shader de sprite, deux passes pour les deux renderers
 └── banc.gdshader    quand la maths se comprend mieux à plat : un ColorRect 2D dans Godot
 ```
+
+**La 2D n'est pas de la 3D simplifiée.** Pas de normale, pas de profondeur, pas de direction de
+vue : certains effets changent de technique, d'autres n'ont pas d'équivalent. Le chapitre
+`00-bases/06-le-2d.md` dit lesquels, et pourquoi.
 
 À partir de la leçon 17, certaines fournissent aussi un **script** (`.gd` et `.cs`) : au-delà d'un
 certain point, un effet n'est plus un fichier de shader, c'est un système. Le shader ne fait que
@@ -27,10 +33,11 @@ Les fichiers de shader ne contiennent **aucun commentaire** : tout est expliqué
 
 ## Comment lire ce cours
 
-1. **Lis `00-bases/` en entier avant la première leçon.** Cinq chapitres courts, mais sans eux tu
+1. **Lis `00-bases/` en entier avant la première leçon.** Six chapitres courts, mais sans eux tu
    vas copier des lignes sans savoir pourquoi elles marchent. Le cinquième,
    `05-brancher-un-shader.md`, est la recette exacte pour rattacher un fichier à un objet dans
-   chaque moteur, et la liste des réglages de pipeline que chaque leçon exige — garde-le ouvert.
+   chaque moteur ; le sixième, `06-le-2d.md`, dit tout ce qui change en 2D. Garde les deux
+   ouverts.
 2. **Fais les leçons dans l'ordre.** Chacune réutilise la précédente : la dissolution (05) est
    le masque (04) avec du bruit, l'hologramme (07) est le fresnel (06) plus des rayures.
 3. **Ouvre le banc** quand une leçon en fournit un. Un shader se comprend en bougeant un chiffre
@@ -62,16 +69,16 @@ moteur, sur une sphère. Le chapitre `00-bases/04-la-boucle-d-iteration.md` mont
 
 ### Bloc 1 — Les bases
 
-| # | Dossier | Ce qu'on fabrique | Ce que tu apprends au passage |
+| # | Dossier | En 3D | En 2D |
 |---|---|---|---|
-| 01 | `01-couleur-et-parametres` | un néon réglable | la structure d'un shader, exposer un réglage, HDR et bloom |
-| 02 | `02-texture-et-uv` | un sol carrelé et teintable | échantillonner, `_ST`, répétition, sRGB contre linéaire |
-| 03 | `03-le-temps` | une chute d'énergie qui défile | animer sans script, `TIME`/`_Time`, `fract`, `sin` |
-| 04 | `04-masques-et-melanges` | de la neige sur les faces horizontales | `step`, `smoothstep`, `mix`, d'où vient un masque |
-| 05 | `05-dissolution` | une désintégration à bord incandescent | bruit, seuil, `discard`, passes d'ombre et de profondeur |
-| 06 | `06-fresnel` | un contour lumineux de silhouette | normale, direction de vue, produit scalaire, `pow` |
-| 07 | `07-hologramme` | un hologramme rayé qui glitche | empiler des couches, transparence, tri, overdraw |
-| 08 | `08-toon-et-contour` | un rendu cel avec trait noir | écrire son éclairage, quantifier, coque inversée |
+| 01 | `01-couleur-et-parametres` | un néon réglable | un sprite qui brille |
+| 02 | `02-texture-et-uv` | un sol carrelé et teintable | carreler une texture sur un sprite, malgré l'atlas |
+| 03 | `03-le-temps` | une chute d'énergie qui défile | un défilement qui boucle dans le sprite |
+| 04 | `04-masques-et-melanges` | de la neige sur les faces horizontales | une usure qui monte, masque peint |
+| 05 | `05-dissolution` | une désintégration à bord incandescent | la même, par l'alpha, sans `discard` |
+| 06 | `06-fresnel` | un contour lumineux de silhouette | **un contour détecté sur l'alpha** — autre technique, même besoin |
+| 07 | `07-hologramme` | un hologramme rayé qui glitche | le même, glitch par décalage d'UV |
+| 08 | `08-toon-et-contour` | un rendu cel avec trait noir | **posterisation et échange de palette** |
 
 ### Bloc 2 — Surfaces
 
@@ -138,8 +145,12 @@ Voir `verif/README.md` pour ce que ça attrape et ce que ça n'attrape pas.
 **Blocs 1, 2 et 3 écrits et complets** — les cinq chapitres de `00-bases/`, l'aide-mémoire, et
 vingt leçons avec leurs fichiers Godot, Unity et Unreal.
 
-À la dernière vérification : **43 shaders Godot et 21 shaders Unity compilent, zéro erreur, zéro
+À la dernière vérification : **51 shaders Godot et 29 shaders Unity compilent, zéro erreur, zéro
 avertissement.**
+
+Le **bloc 1 existe en 2D** : chaque leçon de 01 à 08 fournit un `godot-2d.gdshader` et un
+`unity-2d.shader`, et sa section « En 2D » explique ce qui change. Les blocs suivants auront leur
+version 2D là où elle a un sens — beaucoup d'effets 3D n'en ont pas.
 
 Quelques leçons fournissent plus que les cinq fichiers habituels :
 

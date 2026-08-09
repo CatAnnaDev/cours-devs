@@ -133,6 +133,23 @@ C'est exactement ce qui se passe dans ton moteur selon que le HDR est activé ou
 en une image : **une intensité au-dessus de 1 ne sert à rien tant que le pipeline n'est pas en
 HDR**, et elle devient indispensable dès qu'il l'est.
 
+## En 2D
+
+`godot-2d.gdshader` et `unity-2d.shader` font le même néon sur un **sprite**.
+
+Deux différences de fond :
+
+**Il n'y a pas d'émission.** Un sprite n'a pas de sortie `EMISSION` séparée : la couleur écrite
+**est** la couleur finale. Pour qu'elle brille, il faut donc qu'elle dépasse 1 — même règle qu'en
+3D, mais sans filet.
+
+**L'alpha du sprite porte la forme.** On multiplie la couleur par l'intensité et on garde
+`sprite.a` tel quel, sinon les bords transparents deviennent lumineux.
+
+Pour voir le halo : Godot, `Rendering → Viewport → HDR 2D` dans les paramètres de projet, puis
+`Glow` sur le `WorldEnvironment`. Unity, un `Volume` global avec `Bloom`, et le HDR coché sur
+l'asset URP.
+
 ## Les pièges
 
 **L'auto-exposition annule ton réglage.** Les trois moteurs ont une exposition automatique

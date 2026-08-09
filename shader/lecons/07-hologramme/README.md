@@ -197,6 +197,26 @@ Les remèdes, du plus simple au plus lourd :
 non pas pour l'esthétique, mais parce que **l'addition n'a pas d'ordre**. `a + b = b + a`. Le
 mélange alpha, lui, n'est pas commutatif, et c'est toute la difficulté.
 
+## En 2D
+
+Les rayures et le balayage se calculent directement sur `UV.y` au lieu de la position locale : sur
+un sprite, l'UV **est** la coordonnée verticale de l'objet.
+
+Le glitch, lui, ne déplace pas les sommets — il décale **les UV par bande** :
+
+```glsl
+vec2 uv = vec2(clamp(UV.x + decalage, 0.0, 1.0), UV.y);
+```
+
+Résultat visuel identique, et deux avantages : aucun problème de boîte englobante (leçon 07,
+« Les pièges »), et ça marche sur un sprite qui n'a que quatre sommets.
+
+Le `clamp` n'est pas décoratif : sans lui, une bande décalée va lire le sprite voisin dans
+l'atlas.
+
+Le tri des transparents reste exactement le même problème qu'en 3D — sauf qu'en 2D il se règle
+avec l'ordre des calques, ce qui est autrement plus simple.
+
 ## Les pièges
 
 **L'hologramme disparaît quand la caméra tourne.** Il est trié derrière un autre transparent.

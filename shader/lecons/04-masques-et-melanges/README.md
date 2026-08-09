@@ -166,6 +166,24 @@ et elle vaut aussi pour un contour de personnage (leçon 08) ou un contour de sc
 Change `echelle` dans l'inspecteur : le bas droit reste net à toutes les échelles, le bas gauche
 non.
 
+## En 2D
+
+Le masque ne peut pas venir de la normale — il n'y en a pas. Les versions 2D le prennent d'où il
+vient toujours en 2D :
+
+| Source | Ce que ça donne |
+|---|---|
+| une texture de masque | ce que l'artiste a peint : usure, saleté, zones |
+| `UV.y` | un dégradé vertical : remplissage, jauge, niveau de liquide |
+| la couleur de sommet | une variation par sprite, sans texture |
+| la distance au centre | un halo, une vignette |
+
+Le shader fourni combine les deux premières : un dégradé vertical perturbé par un bruit, pour
+faire monter une usure ou un remplissage avec un bord irrégulier.
+
+Toute la logique de la leçon — `smoothstep(seuil ± nettete)`, `mix`, et les opérations `*`, `max`,
+`1 - x` — est identique. **Seule la source du masque change.**
+
 ## Les pièges
 
 **La neige tourne avec la caméra.** Tu as utilisé la normale en espace vue sans la convertir.

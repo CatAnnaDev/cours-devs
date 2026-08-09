@@ -158,6 +158,41 @@ Cette dernière observation est importante : la largeur du contour à l'écran d
 cylindre il est fin dans un sens et absent dans l'autre, sur un cube **il n'existe que sur les
 faces vues en biais**. Le fresnel n'est pas un contour dessiné : c'est une propriété de la forme.
 
+## En 2D — le contour depuis l'alpha
+
+Le fresnel **n'existe pas** en 2D : il n'y a ni normale, ni direction de vue.
+
+Mais le besoin, lui, existe — détacher un sprite du fond, marquer un objet sélectionné,
+surligner un ennemi. La seule information de forme disponible est **le canal alpha**, et
+l'équivalent 2D du fresnel est donc un contour détecté sur cet alpha :
+
+```glsl
+float voisins = 0.0;
+voisins = max(voisins, texture(TEXTURE, UV + vec2(pas.x, 0.0)).a);
+... huit directions ...
+
+float dedans = step(seuil_alpha, sprite.a);
+float contour = step(seuil_alpha, voisins) * (1.0 - dedans);
+```
+
+Un pixel appartient au contour s'il est **transparent** et qu'au moins un de ses huit voisins est
+**opaque**. C'est de la morphologie : une dilatation de l'alpha, moins l'alpha d'origine.
+
+Quatre points à connaître :
+
+**Huit directions et pas quatre.** Avec quatre, les diagonales du contour ont des trous.
+
+**`TEXTURE_PIXEL_SIZE` / `_MainTex_TexelSize`** donne la taille d'un pixel de la texture. C'est ce
+qui rend l'épaisseur exprimable **en pixels** plutôt qu'en fraction d'UV.
+
+**Il faut de la place autour du sprite.** Le contour est dessiné **en dehors** de la forme : si le
+sprite touche le bord de sa texture, le contour est coupé. Prévois quelques pixels transparents de
+marge — et c'est aussi ce qui règle le débordement sur atlas.
+
+**Le coût est de huit accès texture par pixel.** C'est cher pour un effet permanent : réserve-le à
+la sélection, au survol, ou à quelques objets. Pour un contour sur tout l'écran, une passe de
+post-traitement coûte moins cher (leçon 26).
+
 ## Les pièges
 
 **Sur un cube, ça ne ressemble à rien.** Normal. Un cube n'a que six normales : chaque face est

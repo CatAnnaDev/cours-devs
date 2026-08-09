@@ -156,6 +156,21 @@ dès qu'on répète quelque chose :
 C'est le mécanisme des atlas (leçon 15), des flipbooks, des motifs procéduraux et de la
 variation par cellule. Le connaître ici évite de le redécouvrir trois fois.
 
+## En 2D
+
+C'est la leçon où le 2D pose un vrai problème : **un sprite dans un atlas ne peut pas être
+carrelé.**
+
+Multiplier l'UV par 4 sort de la région du sprite et va lire ses voisins dans la planche. Il n'y a
+pas de contournement dans le shader.
+
+D'où le choix des versions 2D : elles carrèlent une **seconde texture**, `texture_carrelee` en
+Godot et `_Carrelee` en Unity, qui doit être **hors atlas** et en mode répétition. Le sprite garde
+son rôle de forme, la texture carrelée fournit la matière.
+
+C'est exactement ce qu'on fait en vrai pour un sol, un mur ou une barre de progression texturée.
+Voir `00-bases/06-le-2d.md` pour les trois parades à l'atlas.
+
 ## Les pièges
 
 **Le sol scintille quand la caméra bouge.** Les mipmaps sont désactivées, ou la texture est en

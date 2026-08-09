@@ -222,6 +222,36 @@ Fais aussi ceci : mets `douceur` à `0`, regarde le bord entre deux paliers, pui
 Le crénelage disparaît sans que l'aspect change. **Trois centièmes suffisent** — c'est le genre de
 réglage qu'on oublie et qui fait toute la différence entre un rendu propre et un rendu amateur.
 
+## En 2D — la posterisation
+
+Quantifier un **éclairage** n'a pas de sens sans lumières. L'équivalent 2D du toon quantifie
+directement **la couleur** :
+
+```glsl
+vec3 quantifiee = floor(sprite.rgb * niveaux + 0.5) / niveaux;
+```
+
+C'est la posterisation, et c'est ce qui donne le rendu « peu de couleurs, aplats francs » d'un jeu
+stylisé. Le `+ 0.5` arrondit au lieu de tronquer, sinon l'image s'assombrit franchement.
+
+Le shader fournit aussi le second mode, plus puissant : **l'échange de palette**. On calcule la
+luminance du pixel et on s'en sert comme indice dans une rampe de couleurs peinte par un artiste :
+
+```glsl
+float indice = luminance(sprite.rgb);
+vec3 finale = texture(palette, vec2(indice, 0.5)).rgb;
+```
+
+Une texture de 32 × 1 pixels suffit. Changer la rampe change entièrement l'ambiance sans toucher
+aux sprites — c'est comme ça qu'on fait un mode nuit, un effet de poison, une équipe rouge et une
+bleue, ou un flash de dégât.
+
+**Le contour**, lui, n'est pas ici : en 2D c'est celui de la leçon 06, calculé sur l'alpha.
+
+Pour du pixel art : mets la palette en filtrage `Nearest`, et méfie-toi de la posterisation, qui
+peut créer des teintes absentes de ta palette d'origine. L'échange de palette, lui, garantit que
+seules tes couleurs sortent.
+
 ## Les pièges
 
 **Le contour n'apparaît pas.** L'objet a des normales dures (facettes) : la coque s'ouvre aux
