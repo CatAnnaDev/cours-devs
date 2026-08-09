@@ -1,0 +1,10 @@
+{
+  "Group": "hytale.template",
+  "Name": "NeniLearn",
+  "Version": "1.0.0",
+  "Description": "A Hytale server mod",
+  "Authors": [{"Name": "anna"}],
+  "Main": "hytale.template.nenilearn.NeniLearnPlugin",
+  "LoadOrder": "POSTWORLD",
+  "IncludesAssetPack": true
+}
