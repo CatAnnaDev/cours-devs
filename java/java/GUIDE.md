@@ -138,7 +138,7 @@ et l'*exercice* pour t'entraîner.
 - **Lis :** `src/lecons/Lecon10Collections.java`
 - **Exécute :** `java src/Main.java 10`
 - **Entraîne-toi :** `src/exercices/Ex08Collections.java` (8.1 à 8.4).
-- **Va plus loin :** le dossier `notions/` (la « Big O sheet », les collections, les optimisations).
+- **Va plus loin :** le dossier `../notions/` (la « Big O sheet », les collections, les optimisations).
 
 ### Leçon 11 — Structurer une classe (static, public/private, final, getters/setters)
 - **Prérequis :** Leçon 7 (classes/objets).
@@ -190,6 +190,6 @@ les **collections** (`Map`, `Set`), l'**héritage** et les **interfaces**, les *
 puis un **outil de build** (Maven ou Gradle) et un **framework de test** (JUnit) pour des
 projets plus grands. Dis-le-moi quand tu veux et j'ajoute une « partie 2 ».
 
-Et surtout : va lire le dossier **`notions/`** (à la racine du projet). J'y ai mis la **« Big O
+Et surtout : va lire le dossier **`../notions/`** (à la racine du dépôt). J'y ai mis la **« Big O
 sheet »**, un guide sur les **collections** et un sur les **optimisations** — c'est valable
 pour Java comme pour le reste, et ça te fera vraiment passer un cap.

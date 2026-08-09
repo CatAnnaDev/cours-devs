@@ -37,7 +37,7 @@ ce manifeste pour savoir quoi faire.
 > À retenir : **le serveur entre dans ton mod par la classe indiquée dans `Main`.**
 
 Ce fichier est au format **JSON** : une virgule en trop ou un guillemet oublié, et ton mod ne
-se charge plus. Si tu n'es pas à l'aise avec le JSON, lis `notions/json.md` (tout y est).
+se charge plus. Si tu n'es pas à l'aise avec le JSON, lis `../notions/json.md` (tout y est).
 
 ---
 

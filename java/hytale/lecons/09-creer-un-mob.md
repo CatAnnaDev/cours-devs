@@ -133,7 +133,7 @@ Leçon 3.)
   `hasRoleName` / `validateSpawnableRole`.
 - **Position chargée** : fais apparaître le PNJ dans une zone active (près d'une joueuse,
   typiquement), sinon il peut ne pas s'initialiser correctement.
-- **Perf** : ne spawn pas des PNJ en boucle à chaque tick (revois `notions/optimisations.md`).
+- **Perf** : ne spawn pas des PNJ en boucle à chaque tick (revois `../notions/optimisations.md`).
 
 ---
 

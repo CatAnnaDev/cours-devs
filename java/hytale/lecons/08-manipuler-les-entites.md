@@ -137,7 +137,7 @@ moi quand tu voudras t'y attaquer et on fera une leçon dédiée avec un exemple
 - **Toujours vérifier `null`** après `getComponent`, et **`ref.isValid()`** après avoir
   récupéré/créé une ref.
 - **Attention à la perf** : ne crée pas / ne modifie pas des entités à chaque tick sans
-  réfléchir (revois `notions/optimisations.md`).
+  réfléchir (revois `../notions/optimisations.md`).
 - **Les noms exacts des imports** se trouvent vite avec l'autocomplétion de l'IDE, ou en
   regardant un mod existant — ne les apprends pas par cœur.
 

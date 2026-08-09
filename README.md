@@ -17,6 +17,7 @@ programme qui compile, lance, et dit exactement ce qui ne va pas.
 | `java/` | Java depuis zéro, jusqu'au mod Hytale | leçons + exercices + notions |
 | `rust/` | rpn — une calculatrice en Rust, construite pas à pas | 17 chapitres |
 | `gamedev/` | Écrire un moteur, pas utiliser un moteur | à venir |
+| `notions/` | La culture transverse : complexité, cache, mémoire, flottants, texte, concurrence | 16 pages |
 
 ## Le principe
 
@@ -49,3 +50,5 @@ cd csharp/csharplings-gamedev/csharplings && dotnet run
 
 Pour `shader/`, il n'y a rien à lancer : chaque leçon est un fichier à déposer dans ton moteur.
 Commence par `shader/00-bases/`.
+
+Et `notions/` se lit sans rien lancer du tout, dans l'ordre que tu veux.

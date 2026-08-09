@@ -179,7 +179,7 @@ Chaque exercice te dit **quel résultat attendre**, et tu as les corrigés compl
 - **Lis les lignes de la console.** Ton mod affiche des `[NeniLearn] ...` très utiles.
 - **Ne touche pas à `HytaleServer.jar`** : c'est la boîte à outils du serveur, pas ton code.
 - **Garde le `manifest.json` à jour** : si tu renommes la classe principale, change `Main`.
-- **Pour la performance**, va voir le dossier `notions/` (à la racine) : la « Big O sheet »,
+- **Pour la performance**, va voir le dossier `../notions/` (à la racine du dépôt) : la « Big O sheet »,
   les collections, et surtout `optimisations.md` qui a une section spéciale jeux/serveurs
   (ne pas allouer à chaque tick, ne pas bloquer le thread du monde...).
 
