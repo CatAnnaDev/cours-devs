@@ -116,19 +116,19 @@ relire ce que tu viens de corriger.
 | `04_regle_zero` | `cours/04-la-regle-de-zero.md` | règles de 0, 3 et 5, déplacement à la main, `= delete` |
 | `05_conteneurs` | `cours/05-les-conteneurs.md` | `vector`, invalidation, `emplace_back`, `string` et SSO, `map` |
 | `06_algos` | `cours/06-les-algorithmes.md` | lambdas et captures, `<algorithm>`, ranges, `std::span` |
+| `07_templates` | `cours/07-les-templates.md` | déduction, paramètres non-type, `if constexpr`, concepts, repli, `forward` |
+| `08_erreurs` | `cours/08-les-erreurs.md` | le prix réel d'une exception, `noexcept`, `optional`, `expected` |
+| `09_layout` | `cours/09-la-disposition-memoire.md` | alignement, ligne de cache, `[[no_unique_address]]`, faux partage, AoS/SoA |
+| `10_polymorphisme` | `cours/10-le-polymorphisme.md` | virtuel et son coût, `override`, découpage, CRTP, effacement de type |
+| `11_conteneur` | `cours/11-ecrire-son-conteneur.md` | stockage brut, placement `new`, croissance, garantie forte |
+| `12_alloc` | `cours/12-les-allocateurs.md` | compter ce qui alloue, `pmr`, arène, propagation, `small_vector` |
 
-**36 exercices, 14 questions.**
+**71 exercices, 32 questions.**
 
 ## La suite
 
 | Section | Contenu |
 |---|---|
-| `07_templates` | génériques, déduction, `if constexpr`, concepts, ce que ça coûte à la compilation |
-| `08_erreurs` | exceptions et leur prix réel, `noexcept`, `optional`, `expected` |
-| `09_layout` | disposition mémoire, alignement, cache, tableau de structures ou structure de tableaux |
-| `10_polymorphisme` | virtuel contre template, type erasure, CRTP, le coût mesuré |
-| `11_conteneur` | écrire son `vector` : croissance, `emplace`, garantie forte sur exception |
-| `12_alloc` | allocateurs, `pmr`, arène, `small_vector` |
 | `13_threads` | `thread`, `mutex`, `atomic`, ce que le modèle mémoire garantit |
 | `14_coroutines` | générateurs, `co_await`, ce qui est alloué et quand |
 | `15_perf` | mesurer, lire l'assembleur, ce que le compilateur fait déjà pour toi |

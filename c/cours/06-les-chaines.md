@@ -100,7 +100,8 @@ Trois qualités qu'aucune autre n'a :
 3. **Elle renvoie la longueur qu'elle aurait écrite** — donc si le retour est supérieur ou égal à
    `taille`, tu sais que le texte a été tronqué.
 
-Ce troisième point est ce qui la rend supérieure à tout le reste : la troncature est **détectable**.
+Ce troisième point est ce qui la rend supérieure à tout le reste : la troncature est
+**détectable**.
 
 ```c
 if (voulu < 0 || (size_t)voulu >= taille) {

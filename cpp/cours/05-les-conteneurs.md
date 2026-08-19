@@ -92,8 +92,8 @@ accepte des conversions que `push_back` refuserait. C'est parfois pratique et pa
 Une `std::string` courte — jusqu'à une quinzaine de caractères sur la plupart des implémentations —
 range ses octets **dans l'objet lui-même**, sans aucune allocation.
 
-C'est ce qui explique qu'un `std::string` fasse 24 ou 32 octets alors qu'un pointeur plus une taille
-n'en demanderaient que 16 : le reste est le tampon interne.
+C'est ce qui explique qu'un `std::string` fasse 24 ou 32 octets alors qu'un pointeur plus une
+taille n'en demanderaient que 16 : le reste est le tampon interne.
 
 Conséquence pratique : manipuler des chaînes courtes est bien moins coûteux qu'on ne le croit, et
 tenter de les éviter à tout prix est souvent une optimisation prématurée. Ce qui coûte, c'est la

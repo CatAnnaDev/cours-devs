@@ -72,8 +72,8 @@ if (pointeur != NULL) {
 }
 ```
 
-`NULL` est l'adresse « qui ne désigne rien ». La déréférencer plante — et c'est une bonne nouvelle :
-c'est le seul bug de pointeur qui échoue **bruyamment et immédiatement**.
+`NULL` est l'adresse « qui ne désigne rien ». La déréférencer plante — et c'est une bonne nouvelle
+: c'est le seul bug de pointeur qui échoue **bruyamment et immédiatement**.
 
 Trois habitudes :
 

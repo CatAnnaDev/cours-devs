@@ -11,13 +11,13 @@ programme qui compile, lance, et dit exactement ce qui ne va pas.
 | Dossier | Cours | État |
 |---|---|---|
 | `shader/` | Écrire des shaders pour Godot, Unity et Unreal | 20 leçons sur 32 |
-| `c/` | Le C par la mémoire — clings | 46 exercices, 8 chapitres |
-| `cpp/` | Le C++ moderne, et ce que ça coûte — cpplings | 36 exercices, 7 chapitres |
+| `c/` | Le C par la mémoire — clings | 83 exercices, 14 chapitres |
+| `cpp/` | Le C++ moderne, et ce que ça coûte — cpplings | 71 exercices, 13 chapitres |
 | `csharp/` | Le C# pour le jeu vidéo — csharplings | 196 exercices |
 | `java/` | Java depuis zéro, jusqu'au mod Hytale | leçons + exercices + notions |
 | `rust/` | rpn — une calculatrice en Rust, construite pas à pas | 17 chapitres |
 | `gamedev/` | Écrire un moteur, pas utiliser un moteur | à venir |
-| `notions/` | La culture transverse : complexité, cache, mémoire, flottants, texte, concurrence | 16 pages |
+| `notions/` | La culture transverse : complexité, cache, mémoire, flottants, texte, concurrence, et le métier au quotidien | 24 pages |
 
 ## Le principe
 

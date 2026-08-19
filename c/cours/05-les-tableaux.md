@@ -120,7 +120,8 @@ plat[ligne * 4 + colonne]     // ≡ grille[ligne][colonne]
 
 **Et l'ordre de parcours a un vrai coût.** Parcourir ligne par ligne suit la mémoire ; parcourir
 colonne par colonne saute de 16 octets à chaque pas et rate le cache. Sur de grandes matrices,
-l'écart est d'un facteur cinq ou plus. C'est le premier contact avec le sujet du chapitre `17_perf`.
+l'écart est d'un facteur cinq ou plus. C'est le premier contact avec le sujet du chapitre
+`17_perf`.
 
 En paramètre, seule la **première** dimension peut être omise :
 

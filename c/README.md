@@ -105,6 +105,10 @@ cours.
 ./clings quiz list        combien de questions par section
 ```
 
+À partir de `10_modules`, un exercice peut compter **plusieurs fichiers** — un `.c` principal, ses
+annexes et leurs en-têtes. `./clings` les compile et les lie ensemble, `./clings solution` les
+affiche tous, et `./clings reset` les remet tous dans leur état d'origine.
+
 Chaque exercice contient une ligne `const int PAS_FINI = 1;`. Elle a deux rôles : elle marque ta
 progression, et elle t'oblige à **relire** ce que tu viens de corriger avant de passer à la suite.
 Le programme te dit quand tout passe ; c'est toi qui décides que c'est fini.
@@ -121,8 +125,14 @@ Le programme te dit quand tout passe ; c'est toi qui décides que c'est fini.
 | `05_tableaux` | `cours/05-les-tableaux.md` | indices, hors bornes, tableau contre pointeur, deux dimensions |
 | `06_chaines` | `cours/06-les-chaines.md` | le zéro terminal, `strlen`, `strcpy` et ses pièges, `snprintf` |
 | `07_memoire` | `cours/07-la-memoire.md` | `malloc`/`free`, fuite, double free, use-after-free, `realloc`, vecteur |
+| `08_structs` | `cours/08-les-structures.md` | struct, `.` et `->`, alignement et remplissage, union, champs de bits |
+| `09_preprocesseur` | `cours/09-le-preprocesseur.md` | `#define`, parenthèses, double évaluation, `do while (0)`, `#` et `##` |
+| `10_modules` | `cours/10-les-modules.md` | compilation séparée, l'éditeur de liens, `static`, `extern`, type opaque, Makefile |
+| `11_ub` | `cours/11-les-comportements-indefinis.md` | ce que le compilateur en déduit, le catalogue des fautes, lire UBSan |
+| `12_allocateurs` | `cours/12-les-allocateurs.md` | bump, alignement, arène et marqueur, liste libre, en-tête de bloc |
+| `13_structures` | `cours/13-les-structures-de-donnees.md` | vecteur générique, liste chaînée, adressage ouvert, pierre tombale |
 
-**46 exercices, 21 questions.** La suite du programme est en bas de ce fichier.
+**83 exercices, 40 questions.** La suite du programme est en bas de ce fichier.
 
 ## Le questionnaire
 
@@ -151,12 +161,6 @@ partout. Sur Linux, `valgrind --leak-check=full ./ton_programme` reste l'outil d
 
 | Section | Contenu |
 |---|---|
-| `08_structs` | struct, padding, alignement, union, champs de bits, tableau de structs |
-| `09_preprocesseur` | `#define`, macros et parenthèses, gardes d'inclusion, compilation conditionnelle |
-| `10_modules` | compilation séparée, `extern`, `static`, écrire un Makefile |
-| `11_ub` | les comportements indéfinis classiques, prouvés par UBSan |
-| `12_allocateurs` | écrire son allocateur : bump, arène, liste libre, pool |
-| `13_structures` | vecteur générique, table de hachage à adressage ouvert, liste chaînée |
 | `14_fichiers` | `fopen`, lecture tamponnée, binaire contre texte, écriture atomique |
 | `15_processus` | `fork`, `exec`, tubes, un mini shell |
 | `16_reseau` | sockets TCP, un serveur qui tient la charge avec `kqueue` / `epoll` |

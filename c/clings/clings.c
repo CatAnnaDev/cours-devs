@@ -19,7 +19,8 @@
 
 #define TRAVAIL ".travail"
 #define CHEMIN_MAX 1024
-#define COMMANDE_MAX 4096
+#define COMMANDE_MAX 8192
+#define SOURCES_MAX 8
 
 typedef struct {
     int compile;
@@ -82,6 +83,35 @@ static void chemin_de(char *tampon, const char *dossier, const Exercice *exercic
     snprintf(tampon, CHEMIN_MAX, "%s/%s/%s", dossier, exercice->section, exercice->fichier);
 }
 
+static int se_termine_par(const char *texte, const char *suffixe) {
+    size_t longueur = strlen(texte);
+    size_t attendue = strlen(suffixe);
+    return longueur >= attendue && strcmp(texte + longueur - attendue, suffixe) == 0;
+}
+
+static int sources_de(const Exercice *exercice, const char *dossier,
+                      char chemins[SOURCES_MAX][CHEMIN_MAX]) {
+    int compte = 0;
+    chemin_de(chemins[compte++], dossier, exercice);
+
+    const char *curseur = exercice->annexes;
+    while (curseur != NULL && *curseur != '\0' && compte < SOURCES_MAX) {
+        while (*curseur == ' ') {
+            curseur++;
+        }
+        const char *debut = curseur;
+        while (*curseur != '\0' && *curseur != ' ') {
+            curseur++;
+        }
+        if (curseur == debut) {
+            break;
+        }
+        snprintf(chemins[compte++], CHEMIN_MAX, "%s/%s/%.*s", dossier, exercice->section,
+                 (int)(curseur - debut), debut);
+    }
+    return compte;
+}
+
 static int est_termine(const char *chemin) {
     char *contenu = lire_fichier(chemin);
     if (contenu == NULL) {
@@ -100,12 +130,18 @@ static int est_termine(const char *chemin) {
     return termine;
 }
 
-static long date_modification(const char *chemin) {
-    struct stat infos;
-    if (stat(chemin, &infos) != 0) {
-        return -1;
+static long empreinte_de(const Exercice *exercice) {
+    char chemins[SOURCES_MAX][CHEMIN_MAX];
+    const int nombre = sources_de(exercice, "exercices", chemins);
+    long total = 0;
+
+    for (int i = 0; i < nombre; i++) {
+        struct stat infos;
+        if (stat(chemins[i], &infos) == 0) {
+            total += (long)infos.st_mtime;
+        }
     }
-    return (long)infos.st_mtime;
+    return total;
 }
 
 static void liberer_resultat(Resultat *resultat) {
@@ -115,12 +151,16 @@ static void liberer_resultat(Resultat *resultat) {
     resultat->sortie = NULL;
 }
 
-static Resultat compiler_et_lancer(const char *source, const char *nom) {
+static Resultat compiler_et_lancer(const Exercice *exercice, const char *dossier,
+                                   const char *nom) {
     Resultat resultat = {0, -1, 0, NULL, NULL};
     char commande[COMMANDE_MAX];
     char binaire[CHEMIN_MAX];
     char journal[CHEMIN_MAX];
     char sortie[CHEMIN_MAX];
+    char chemins[SOURCES_MAX][CHEMIN_MAX];
+
+    const int nombre = sources_de(exercice, dossier, chemins);
 
     mkdir(TRAVAIL, 0755);
     snprintf(binaire, sizeof binaire, "%s/%s", TRAVAIL, nom);
@@ -132,12 +172,24 @@ static Resultat compiler_et_lancer(const char *source, const char *nom) {
         compilateur = "cc";
     }
 
-    snprintf(commande, sizeof commande,
-             "\"%s\" -std=c17 -g -O0 -fno-omit-frame-pointer "
-             "-fsanitize=address,undefined -fno-sanitize-recover=undefined "
-             "-Wall -Wextra -Wno-unused-function -I. "
-             "\"%s\" -o \"%s\" > \"%s\" 2>&1",
-             compilateur, source, binaire, journal);
+    int ecrit = snprintf(commande, sizeof commande,
+                         "\"%s\" -std=c17 -g -O0 -fno-omit-frame-pointer "
+                         "-fsanitize=address,undefined -fno-sanitize-recover=undefined "
+                         "-Wall -Wextra -Wno-unused-function -I.",
+                         compilateur);
+
+    for (int i = 0; i < nombre && ecrit > 0 && (size_t)ecrit < sizeof commande; i++) {
+        if (!se_termine_par(chemins[i], ".c")) {
+            continue;
+        }
+        ecrit += snprintf(commande + ecrit, sizeof commande - (size_t)ecrit, " \"%s\"", chemins[i]);
+    }
+
+    if (ecrit <= 0 || (size_t)ecrit >= sizeof commande) {
+        return resultat;
+    }
+    snprintf(commande + ecrit, sizeof commande - (size_t)ecrit, " -o \"%s\" > \"%s\" 2>&1", binaire,
+             journal);
 
     int etat = system(commande);
     resultat.journal = lire_fichier(journal);
@@ -274,18 +326,26 @@ static void commande_solution(const char *id) {
         message(ROUGE, "exercice inconnu");
         return;
     }
-    char chemin[CHEMIN_MAX];
-    chemin_de(chemin, "solutions", exercice);
-    char *contenu = lire_fichier(chemin);
-    if (contenu == NULL) {
-        message(ROUGE, "pas de solution pour cet exercice");
-        return;
+    char chemins[SOURCES_MAX][CHEMIN_MAX];
+    const int nombre = sources_de(exercice, "solutions", chemins);
+    int montres = 0;
+
+    for (int i = 0; i < nombre; i++) {
+        char *contenu = lire_fichier(chemins[i]);
+        if (contenu == NULL) {
+            continue;
+        }
+        separateur();
+        printf("%s%s%s\n", GRIS, chemins[i], FIN);
+        separateur();
+        printf("%s\n", contenu);
+        free(contenu);
+        montres++;
     }
-    separateur();
-    printf("%s%s%s\n", GRIS, chemin, FIN);
-    separateur();
-    printf("%s\n", contenu);
-    free(contenu);
+
+    if (montres == 0) {
+        message(ROUGE, "pas de solution pour cet exercice");
+    }
 }
 
 static void commande_reset(const char *id) {
@@ -294,26 +354,33 @@ static void commande_reset(const char *id) {
         message(ROUGE, "exercice inconnu");
         return;
     }
-    char origine[CHEMIN_MAX];
-    char cible[CHEMIN_MAX];
-    chemin_de(origine, "origines", exercice);
-    chemin_de(cible, "exercices", exercice);
+    char origines[SOURCES_MAX][CHEMIN_MAX];
+    char cibles[SOURCES_MAX][CHEMIN_MAX];
+    const int nombre = sources_de(exercice, "origines", origines);
+    sources_de(exercice, "exercices", cibles);
+    int remis = 0;
 
-    char *contenu = lire_fichier(origine);
-    if (contenu == NULL) {
+    for (int i = 0; i < nombre; i++) {
+        char *contenu = lire_fichier(origines[i]);
+        if (contenu == NULL) {
+            continue;
+        }
+        FILE *fichier = fopen(cibles[i], "wb");
+        if (fichier == NULL) {
+            free(contenu);
+            continue;
+        }
+        fputs(contenu, fichier);
+        fclose(fichier);
+        free(contenu);
+        remis++;
+    }
+
+    if (remis == 0) {
         message(ROUGE, "aucune copie d'origine trouvee");
         return;
     }
-    FILE *fichier = fopen(cible, "wb");
-    if (fichier == NULL) {
-        message(ROUGE, "impossible d'ecrire l'exercice");
-        free(contenu);
-        return;
-    }
-    fputs(contenu, fichier);
-    fclose(fichier);
-    free(contenu);
-    message(VERT, "exercice remis a zero");
+    message(VERT, remis > 1 ? "exercice remis a zero, annexes comprises" : "exercice remis a zero");
 }
 
 static void commande_run(const char *id) {
@@ -326,7 +393,7 @@ static void commande_run(const char *id) {
     chemin_de(chemin, "exercices", exercice);
     entete(exercice);
     bloc("consigne", exercice->consigne, BLEU);
-    Resultat resultat = compiler_et_lancer(chemin, exercice->id);
+    Resultat resultat = compiler_et_lancer(exercice, "exercices", exercice->id);
     afficher_resultat(&resultat, exercice, est_termine(chemin));
     liberer_resultat(&resultat);
 }
@@ -336,12 +403,10 @@ static int commande_verify(void) {
 
     for (int i = 0; i < CATALOGUE_TAILLE; i++) {
         const Exercice *exercice = &CATALOGUE[i];
-        char chemin[CHEMIN_MAX];
         char nom[256];
-        chemin_de(chemin, "solutions", exercice);
         snprintf(nom, sizeof nom, "solution_%s", exercice->id);
 
-        Resultat resultat = compiler_et_lancer(chemin, nom);
+        Resultat resultat = compiler_et_lancer(exercice, "solutions", nom);
         int ok = resultat.compile && resultat.code == 0 && resultat.signal_recu == 0;
 
         printf("  %s%s%s  %s\n", ok ? VERT : ROUGE, ok ? "ok  " : "RATE", FIN, exercice->id);
@@ -457,14 +522,14 @@ static void boucle_principale(void) {
         }
 
         chemin_de(chemin, "exercices", courant);
-        long empreinte = date_modification(chemin);
+        long empreinte = empreinte_de(courant);
 
         printf("\033[2J\033[H");
         entete(courant);
         printf("%s%s%s\n", GRIS, chemin, FIN);
         bloc("consigne", courant->consigne, BLEU);
 
-        Resultat resultat = compiler_et_lancer(chemin, courant->id);
+        Resultat resultat = compiler_et_lancer(courant, "exercices", courant->id);
         int termine = est_termine(chemin);
         afficher_resultat(&resultat, courant, termine);
         int reussi = resultat.compile && resultat.code == 0 && resultat.signal_recu == 0;
@@ -482,8 +547,8 @@ static void boucle_principale(void) {
         while (1) {
             struct timespec pause = {0, 200000000L};
             nanosleep(&pause, NULL);
-            long actuelle = date_modification(chemin);
-            if (actuelle != empreinte && actuelle != -1) {
+            long actuelle = empreinte_de(courant);
+            if (actuelle != empreinte) {
                 break;
             }
         }

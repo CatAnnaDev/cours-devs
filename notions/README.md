@@ -12,6 +12,10 @@ termine par un « à retenir » qu'on peut relire seul.
 Si tu n'en lis que trois : **`big-o.md`**, **`cache.md`**, **`memoire.md`**. Dans cet ordre. Ce
 sont ceux qui changent la façon dont on écrit tout le reste.
 
+Et si tu débutes dans le métier plutôt que dans le langage, commence plutôt par **`git.md`**,
+**`debogage.md`** et **`terminal.md`** : ce sont les trois outils que tu utiliseras tous les
+jours, quel que soit ce que tu écris.
+
 ## Les données
 
 | Page | Ce qu'elle explique |
@@ -52,6 +56,24 @@ sont ceux qui changent la façon dont on écrit tout le reste.
 | Page | Ce qu'elle explique |
 |---|---|
 | [`json.md`](json.md) | lire et écrire du JSON sans erreur |
+| [`regex.md`](regex.md) | décrire une forme de texte, la gourmandise, et quand ne pas en écrire |
+
+## Le métier au quotidien
+
+| Page | Ce qu'elle explique |
+|---|---|
+| [`git.md`](git.md) | le graphe de commits, fusionner ou rebaser, et comment réparer |
+| [`debogage.md`](debogage.md) | chercher un bug par méthode plutôt qu'au flair |
+| [`terminal.md`](terminal.md) | code de sortie, tubes, redirections, et les scripts qui ne mentent pas |
+| [`tests.md`](tests.md) | ce qu'on teste, ce qui rend un test utile, et ce que la couverture ne dit pas |
+
+## Ce qui tourne ailleurs que chez toi
+
+| Page | Ce qu'elle explique |
+|---|---|
+| [`http.md`](http.md) | requête, réponse, idempotence, codes, et ce qui casse en vrai |
+| [`journaux.md`](journaux.md) | journaliser utile, et ce qu'on n'y met jamais |
+| [`securite.md`](securite.md) | les fautes que tout le monde commet : injections, secrets, mots de passe |
 
 ---
 

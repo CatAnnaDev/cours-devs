@@ -1,6 +1,8 @@
 #ifndef CATALOGUE_H
 #define CATALOGUE_H
 
+#include <stddef.h>
+
 typedef struct {
     const char *id;
     const char *section;
@@ -8,6 +10,7 @@ typedef struct {
     const char *titre;
     const char *consigne;
     const char *indice;
+    const char *annexes;
 } Exercice;
 
 typedef struct {
