@@ -186,7 +186,10 @@ section `12_allocateurs`.
 
 ## Le tableau qui grandit
 
-C'est la structure de données la plus utile du C, et elle tient en dix lignes :
+C'est la structure de données la plus utile du C, et elle tient en dix lignes. Deux écritures y
+apparaissent pour la première fois : `vecteur->donnees` est exactement `(*vecteur).donnees`, une
+abréviation que le chapitre 08 détaille ; et `a ? b : c` est le ternaire du chapitre 01, un `if`
+en une expression.
 
 ```c
 typedef struct {

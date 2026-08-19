@@ -122,13 +122,13 @@ relire ce que tu viens de corriger.
 | `10_polymorphisme` | `cours/10-le-polymorphisme.md` | virtuel et son coût, `override`, découpage, CRTP, effacement de type |
 | `11_conteneur` | `cours/11-ecrire-son-conteneur.md` | stockage brut, placement `new`, croissance, garantie forte |
 | `12_alloc` | `cours/12-les-allocateurs.md` | compter ce qui alloue, `pmr`, arène, propagation, `small_vector` |
+| `13_threads` | `cours/13-les-threads.md` | course de données, `jthread`, `atomic`, modèle mémoire, contention |
+| `14_coroutines` | `cours/14-les-coroutines.md` | `promise_type`, `co_yield`, le cadre, le piège des paramètres |
 
-**71 exercices, 32 questions.**
+**83 exercices, 38 questions.**
 
 ## La suite
 
 | Section | Contenu |
 |---|---|
-| `13_threads` | `thread`, `mutex`, `atomic`, ce que le modèle mémoire garantit |
-| `14_coroutines` | générateurs, `co_await`, ce qui est alloué et quand |
 | `15_perf` | mesurer, lire l'assembleur, ce que le compilateur fait déjà pour toi |

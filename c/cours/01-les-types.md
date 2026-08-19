@@ -83,6 +83,46 @@ for (size_t i = taille - 1; i >= 0; i--) {
 3. Convertir explicitement, et dans le bon sens : `(size_t)indice < taille` **après** avoir vérifié
    que `indice >= 0`.
 
+## Trois opérateurs qu'on n'a pas encore nommés
+
+La parade 3 demande d'enchaîner deux tests, et le C a exactement ce qu'il faut :
+
+```c
+indice >= 0 && (size_t)indice < taille    // les DEUX sont vraies
+indice < 0 || indice >= (int)taille       // au moins UNE est vraie
+!fini                                     // la negation
+```
+
+**`&&` s'arrête dès qu'il sait.** Si `indice >= 0` est faux, la droite n'est **jamais évaluée** —
+c'est le court-circuit, et c'est ce qui rend `p != NULL && p->champ == 3` sûr. `||` fait le
+symétrique : il s'arrête au premier vrai.
+
+**Ne les confonds pas avec `&` et `|`**, qui travaillent bit à bit (chapitre 02) et évaluent
+toujours leurs deux côtés. `a & 1 == 0` ne teste pas la parité : `==` lie plus fort que `&`, donc
+ça vaut `a & (1 == 0)`, c'est-à-dire `a & 0`, c'est-à-dire zéro. Le compilateur t'avertit,
+écoute-le.
+
+Une quatrième forme revient partout et se lit comme un `if` en une expression, le **ternaire** :
+
+```c
+size_t nouvelle = capacite == 0 ? 1 : capacite * 2;   // si capacite vaut 0, alors 1, sinon le double
+```
+
+## Les suffixes de littéral
+
+`1` est un `int`, même si tu l'affectes à un `long long`. La conversion arrive **après** le calcul,
+donc trop tard :
+
+| Écriture | Type | À quoi ça sert |
+|---|---|---|
+| `1` | `int` | le défaut |
+| `1u` | `unsigned int` | forcer le monde non signé |
+| `1L` / `1UL` | `long` / `unsigned long` | 64 bits ici |
+| `1LL` / `1ULL` | `long long` / `unsigned long long` | 64 bits partout |
+
+`1 << 40` déborde d'un `int` ; `1ULL << 40` non. C'est la même règle qu'à la section précédente :
+le type du calcul se décide sur les opérandes, jamais sur la destination.
+
 ## Le débordement
 
 ```c

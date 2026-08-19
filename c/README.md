@@ -131,8 +131,10 @@ Le programme te dit quand tout passe ; c'est toi qui décides que c'est fini.
 | `11_ub` | `cours/11-les-comportements-indefinis.md` | ce que le compilateur en déduit, le catalogue des fautes, lire UBSan |
 | `12_allocateurs` | `cours/12-les-allocateurs.md` | bump, alignement, arène et marqueur, liste libre, en-tête de bloc |
 | `13_structures` | `cours/13-les-structures-de-donnees.md` | vecteur générique, liste chaînée, adressage ouvert, pierre tombale |
+| `14_fichiers` | `cours/14-les-fichiers.md` | `fopen`, tampon, `fgets` et le saut de ligne, écriture atomique |
+| `15_processus` | `cours/15-les-processus.md` | `fork`, statut de sortie, tubes, `exec`, `dup2`, un mini shell |
 
-**83 exercices, 40 questions.** La suite du programme est en bas de ce fichier.
+**95 exercices, 46 questions.** La suite du programme est en bas de ce fichier.
 
 ## Le questionnaire
 
@@ -161,7 +163,5 @@ partout. Sur Linux, `valgrind --leak-check=full ./ton_programme` reste l'outil d
 
 | Section | Contenu |
 |---|---|
-| `14_fichiers` | `fopen`, lecture tamponnée, binaire contre texte, écriture atomique |
-| `15_processus` | `fork`, `exec`, tubes, un mini shell |
 | `16_reseau` | sockets TCP, un serveur qui tient la charge avec `kqueue` / `epoll` |
 | `17_perf` | mesurer, cache, alignement, dérouler, ce que le compilateur fait déjà |

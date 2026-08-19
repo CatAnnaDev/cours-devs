@@ -223,7 +223,7 @@ make
 ```
 
 Le premier exercice ne demande rien : ouvre le fichier, passe `PAS_FINI` à 0, sauvegarde. C'est la
-boucle que tu répéteras quarante-cinq fois.
+boucle que tu répéteras quatre-vingt-quatorze fois.
 
 Le deuxième ne compile pas, exprès. Le troisième explose, exprès. Tu viens de lire ce qu'il faut
 pour les deux.
