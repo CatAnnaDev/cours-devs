@@ -126,15 +126,15 @@ relire ce que tu viens de corriger.
 | `14_coroutines` | `cours/14-les-coroutines.md` | `promise_type`, `co_yield`, le cadre, le piège des paramètres |
 | `15_perf` | `cours/15-la-performance.md` | rendre le coût visible, copies, allocations, effacement de type |
 | `16_ranges` | `cours/16-les-ranges.md` | vues paresseuses, projections, composition, durée de vie |
+| `17_constexpr` | `cours/17-la-compilation.md` | `constexpr`, `consteval`, `constinit`, les limites de l'évaluateur |
+| `18_concurrence` | `cours/18-la-concurrence.md` | ordonnancement mémoire, `compare_exchange`, `latch`, pool de tâches |
 
-**97 exercices, 44 questions.**
+**111 exercices, 50 questions.**
 
 ## La suite
 
 | Section | Contenu |
 |---|---|
-| `17_constexpr` | calcul à la compilation, `consteval`, `constinit`, ce que ça coûte |
-| `18_concurrence` | au-delà des threads : sans verrou, ordonnancement mémoire, pool de tâches |
 | `19_reseau` | sockets en C++, RAII sur un descripteur, protocole typé |
 | `20_serialisation` | binaire et texte, versions, compatibilité ascendante |
 | `21_texte` | encodages, `string_view`, formatage avec `std::format` |

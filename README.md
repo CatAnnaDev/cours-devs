@@ -11,8 +11,8 @@ programme qui compile, lance, et dit exactement ce qui ne va pas.
 | Dossier | Cours | État |
 |---|---|---|
 | `shader/` | Écrire des shaders pour Godot, Unity et Unreal | 20 leçons sur 32 |
-| `c/` | Le C par la mémoire — clings | 109 exercices, 18 chapitres |
-| `cpp/` | Le C++ moderne, et ce que ça coûte — cpplings | 97 exercices, 17 chapitres |
+| `c/` | Le C par la mémoire — clings | 123 exercices, 20 chapitres |
+| `cpp/` | Le C++ moderne, et ce que ça coûte — cpplings | 111 exercices, 19 chapitres |
 | `csharp/` | Le C# pour le jeu vidéo — csharplings | 196 exercices |
 | `java/` | Java depuis zéro, jusqu'au mod Hytale | leçons + exercices + notions |
 | `rust/` | rpn — une calculatrice en Rust, construite pas à pas | 17 chapitres |

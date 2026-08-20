@@ -135,8 +135,10 @@ Le programme te dit quand tout passe ; c'est toi qui décides que c'est fini.
 | `15_processus` | `cours/15-les-processus.md` | `fork`, statut de sortie, tubes, `exec`, `dup2`, un mini shell |
 | `16_reseau` | `cours/16-le-reseau.md` | sockets TCP, ordre des octets, cadrage des messages, `kqueue` |
 | `17_perf` | `cours/17-la-performance.md` | mesurer sans mentir, cache, `restrict`, ce que `-O2` fait déjà |
+| `18_binaire` | `cours/18-les-formats-binaires.md` | boutisme, sérialisation, en-tête, et toute longueur lue est hostile |
+| `19_texte` | `cours/19-le-texte.md` | octet, point de code, graphème, UTF-8 à la main, validation |
 
-**109 exercices, 52 questions.** La suite du programme est en bas de ce fichier.
+**123 exercices, 58 questions.** La suite du programme est en bas de ce fichier.
 
 ## Le questionnaire
 
@@ -165,8 +167,6 @@ partout. Sur Linux, `valgrind --leak-check=full ./ton_programme` reste l'outil d
 
 | Section | Contenu |
 |---|---|
-| `18_binaire` | formats de fichiers, boutisme, sérialisation, écriture d'un lecteur robuste |
-| `19_texte` | encodages, UTF-8 à la main, analyse lexicale, découpage sûr |
 | `20_temps` | horloges monotones et murales, dates, mesure, dérive |
 | `21_threads` | `pthreads`, mutex, atomiques C11, ce que le modèle mémoire garantit |
 | `22_algos` | tri, recherche, complexité mesurée plutôt que récitée |
