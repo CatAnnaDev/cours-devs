@@ -133,8 +133,10 @@ Le programme te dit quand tout passe ; c'est toi qui décides que c'est fini.
 | `13_structures` | `cours/13-les-structures-de-donnees.md` | vecteur générique, liste chaînée, adressage ouvert, pierre tombale |
 | `14_fichiers` | `cours/14-les-fichiers.md` | `fopen`, tampon, `fgets` et le saut de ligne, écriture atomique |
 | `15_processus` | `cours/15-les-processus.md` | `fork`, statut de sortie, tubes, `exec`, `dup2`, un mini shell |
+| `16_reseau` | `cours/16-le-reseau.md` | sockets TCP, ordre des octets, cadrage des messages, `kqueue` |
+| `17_perf` | `cours/17-la-performance.md` | mesurer sans mentir, cache, `restrict`, ce que `-O2` fait déjà |
 
-**95 exercices, 46 questions.** La suite du programme est en bas de ce fichier.
+**109 exercices, 52 questions.** La suite du programme est en bas de ce fichier.
 
 ## Le questionnaire
 
@@ -163,5 +165,16 @@ partout. Sur Linux, `valgrind --leak-check=full ./ton_programme` reste l'outil d
 
 | Section | Contenu |
 |---|---|
-| `16_reseau` | sockets TCP, un serveur qui tient la charge avec `kqueue` / `epoll` |
-| `17_perf` | mesurer, cache, alignement, dérouler, ce que le compilateur fait déjà |
+| `18_binaire` | formats de fichiers, boutisme, sérialisation, écriture d'un lecteur robuste |
+| `19_texte` | encodages, UTF-8 à la main, analyse lexicale, découpage sûr |
+| `20_temps` | horloges monotones et murales, dates, mesure, dérive |
+| `21_threads` | `pthreads`, mutex, atomiques C11, ce que le modèle mémoire garantit |
+| `22_algos` | tri, recherche, complexité mesurée plutôt que récitée |
+| `23_parseur` | lexeur, analyseur descendant, arbre syntaxique, messages d'erreur |
+| `24_vm` | une machine à pile : format d'instruction, boucle d'exécution, pile d'appels |
+| `25_bibliotheque` | concevoir une API C, ABI, versions, ce qu'on expose et ce qu'on cache |
+| `26_tests` | écrire son cadre de test, fixtures, ce qui rend un test utile |
+| `27_outils` | débogueur, profileur, sanitizers avancés, analyse statique |
+| `28_portabilite` | tailles, boutisme, tests de fonctionnalité, compilation croisée |
+| `29_securite` | entrées non fiables, débordements, durcissement, ce que le compilateur offre |
+| `30_projet` | un projet complet, du premier fichier au binaire livrable |

@@ -124,11 +124,28 @@ relire ce que tu viens de corriger.
 | `12_alloc` | `cours/12-les-allocateurs.md` | compter ce qui alloue, `pmr`, arène, propagation, `small_vector` |
 | `13_threads` | `cours/13-les-threads.md` | course de données, `jthread`, `atomic`, modèle mémoire, contention |
 | `14_coroutines` | `cours/14-les-coroutines.md` | `promise_type`, `co_yield`, le cadre, le piège des paramètres |
+| `15_perf` | `cours/15-la-performance.md` | rendre le coût visible, copies, allocations, effacement de type |
+| `16_ranges` | `cours/16-les-ranges.md` | vues paresseuses, projections, composition, durée de vie |
 
-**83 exercices, 38 questions.**
+**97 exercices, 44 questions.**
 
 ## La suite
 
 | Section | Contenu |
 |---|---|
-| `15_perf` | mesurer, lire l'assembleur, ce que le compilateur fait déjà pour toi |
+| `17_constexpr` | calcul à la compilation, `consteval`, `constinit`, ce que ça coûte |
+| `18_concurrence` | au-delà des threads : sans verrou, ordonnancement mémoire, pool de tâches |
+| `19_reseau` | sockets en C++, RAII sur un descripteur, protocole typé |
+| `20_serialisation` | binaire et texte, versions, compatibilité ascendante |
+| `21_texte` | encodages, `string_view`, formatage avec `std::format` |
+| `22_temps` | `chrono`, calendrier C++20, fuseaux, horloge injectable |
+| `23_patterns` | les motifs qui survivent au C++ moderne, et ceux que le langage a rendus inutiles |
+| `24_bibliotheque` | concevoir une API C++, pimpl, ABI, ce qu'on met dans un en-tête |
+| `25_tests` | écrire son cadre, tests par propriétés, doublures |
+| `26_outils` | godbolt, profileurs, sanitizers, analyse statique |
+| `27_interop` | `extern "C"`, exposer du C++ à du C, durée de vie à la frontière |
+| `28_projet` | un projet complet, de l'en-tête au binaire |
+
+Les **modules C++20** ne figurent pas dans cette liste : ils exigent une compilation multi-fichiers
+avec des unités précompilées, là où `cpplings` compile un seul fichier par exercice. Ils seront
+traités en leçon le jour où le runner saura les construire.
